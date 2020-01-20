@@ -20,7 +20,24 @@ entry = entry.replace('<a href=\'http:///\'></a>','-');
 document.getElementById('content').innerHTML = content; 
 
 
+//service worker
+if('serviceWorker' in navigator) {
+	navigator.serviceWorker.register('/sw.js');
+};
 
+// Requesting permission for Notifications after clicking on the button
+var button = document.getElementById("notifications");
+button.addEventListener('click', function(e) {
+	Notification.requestPermission().then(function(result) {
+		if(result === 'granted') {
+			randomNotification();
+		}
+	});
+});
+
+
+
+//load images
 var imagesToLoad = document.querySelectorAll('img[data-src]');
 var loadImages = function(image) {
 	image.setAttribute('src', image.getAttribute('data-src'));
