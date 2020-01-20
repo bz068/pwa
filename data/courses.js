@@ -1,18 +1,22 @@
 var courses = 
 [
-    { topic: 'math',
+    { img: 'hendon',
+        topic: 'math',
      location: 'hendon',
-      price: 100 },
+      price: '100' },
 
-    { topic: 'math',
+    { img: 'colindale',
+        topic: 'math',
      location: 'colindale',
-      price: 80 },
+      price: '80' },
 
-    { topic: 'math',
+    {img: 'brent-cross',
+         topic: 'math',
      location: 'brent cross',
-      price: 90 },
+      price: '90' },
       
-    { topic: 'math',
+    { img: 'golders-green',
+        topic: 'math',
      location: 'golders green'
-     , price: 120 },
+     , price: '120' },
    ];
