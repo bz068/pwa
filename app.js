@@ -20,20 +20,12 @@ entry = entry.replace('<a href=\'http:///\'></a>','-');
 document.getElementById('content').innerHTML = content; 
 
 
-//service worker
-if('serviceWorker' in navigator) {
-	navigator.serviceWorker.register('/sw.js');
-};
-
-// Requesting permission for Notifications after clicking on the button
-var button = document.getElementById("notifications");
-button.addEventListener('click', function(e) {
-	Notification.requestPermission().then(function(result) {
-		if(result === 'granted') {
-			randomNotification();
-		}
-	});
-});
+//sw
+if('serviceWorker' in navigator){
+    navigator.serviceWorker.register('/sw.js')
+    .then((reg) => console.log('sw registered'))
+    .catch((err) => console.log('not registered'));
+}
 
 
 
