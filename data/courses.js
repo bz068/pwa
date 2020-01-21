@@ -14,6 +14,11 @@ var courses =
          topic: 'math',
      location: 'brent cross',
       price: '90' },
+
+      {img: 'golders-green',
+           topic: 'english',
+       location: 'golders green',
+        price: '130' }, 
       
     { img: 'golders-green',
         topic: 'math',

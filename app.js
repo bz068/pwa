@@ -30,27 +30,35 @@ if('serviceWorker' in navigator){
 
 
 //load images
+//imagesToLoad variable contains references to all the images
 var imagesToLoad = document.querySelectorAll('img[data-src]');
 var loadImages = function(image) {
 	image.setAttribute('src', image.getAttribute('data-src'));
 	image.onload = function() {
-		image.removeAttribute('data-src');
-	};
+        image.removeAttribute('data-src');
+        //When each image is actually loaded, it removes its data-src attribute as it's not needed anymore.
+
+    };
+    
 };
+//If the IntersectionObserver object is supported, the app creates a new instance of it
+// image is loaded when it intersects with the observer
 if('IntersectionObserver' in window) {
 	var observer = new IntersectionObserver(function(items, observer) {
 		items.forEach(function(item) {
 			if(item.isIntersecting) {
 				loadImages(item.target);
-				observer.unobserve(item.target);
+                observer.unobserve(item.target);
+                //image is then removed from the observation list
 			}
 		});
-	});
-	imagesToLoad.forEach(function(img) {
+    });
+    	imagesToLoad.forEach(function(img) {
 		observer.observe(img);
 	});
 }
 else {
+    //loop through each image and load it
 	imagesToLoad.forEach(function(img) {
 		loadImages(img);
 	});
